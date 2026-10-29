@@ -1,10 +1,9 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        clean = "".join(c.lower() for c in s if c.isalnum())
-        stack = []
-        for c in clean:
-            stack.append(c)
-        rev = ""
-        while stack:
-            rev +=stack.pop()
-        return clean == rev
+        clean = ""
+        for c in s:
+            if 'A' <= c <= 'Z':
+                clean += chr(ord(c)+32)
+            elif 'a' <= c <= 'z' or "0" <= c <="9":
+                clean +=c
+        return clean == clean[::-1]
