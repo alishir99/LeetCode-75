@@ -1,14 +1,16 @@
 class Solution:
+    def binary_search (self, nums, start, end, target):
+        if start>end:
+            return -1
+        mid = (start+end)//2
+        if target == nums[mid]:
+            return mid
+        elif target < nums[mid]:
+            return self.binary_search(nums, start, mid-1, target)
+        else:
+            return self.binary_search(nums, mid+1, end, target )
     def search(self, nums: list[int], target: int) -> int:
-        left = 0
-        right = len(nums)-1
-        while left <= right:
-            n = (right-left)//2
-            i = left+n
-            if target == nums[i]:
-                return i
-            elif target > nums[i]:
-                left = i +1
-            elif target < nums[i]:
-                right = i-1
-        return -1
+        start = 0
+        end = len(nums)-1
+        ans = self.binary_search(nums, start, end, target )
+        return ans
