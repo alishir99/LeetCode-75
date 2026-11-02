@@ -9,6 +9,4 @@ class Solution:
                 tot += d*d
                 n = n//10
             n = tot
-        if n in seen:
-            return False 
-        return True 
+        return n==1
