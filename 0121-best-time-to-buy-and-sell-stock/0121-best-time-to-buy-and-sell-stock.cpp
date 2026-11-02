@@ -8,10 +8,7 @@ public:
                 lowest = p;
             }
             else{
-                int diff = p-lowest;
-                if (diff>profit){
-                    profit = diff;
-                }
+                profit = std::max(profit, p-lowest);
             }
         }
         return profit;
