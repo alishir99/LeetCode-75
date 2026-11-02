@@ -1,13 +1,12 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        std::unordered_map<int, int> m; 
+        std::unordered_map<int, int> m;
+        int ans = 0;  
         for (int n: nums){
-            m[n]++;
+            ans = ans^n;
         }
-        for (auto& [k,v]: m){
-            if (v==1){ return k;}
-        }
-        return -1;
+        return ans;
+       
     }
 };
