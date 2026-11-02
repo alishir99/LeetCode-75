@@ -11,13 +11,12 @@ public:
 
     }
     bool isHappy(int n) {
-        int slow = n;
-        int fast = next(n);
-        while (slow !=fast){
-            slow = next(slow);
-            fast = next(next(fast));
+        std::unordered_set<int> seen; 
+        while (n!= 1 && !seen.count(n)){
+            seen.insert(n);
+            n = next(n);
         }
-        return fast ==1;
+        return n==1;
     }
 
 };
