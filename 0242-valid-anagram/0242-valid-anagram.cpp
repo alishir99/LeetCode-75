@@ -2,15 +2,14 @@ class Solution {
 public:
     bool isAnagram(string s, string t) {
         if (s.size()!=t.size()){ return false;}
-        std::unordered_map<char, int> a;
-        std::unordered_map<char, int> b;
+        int count[26] = {0};
         for (int i = 0; i<s.size(); i++){
-            a[s[i]]++; 
-            b[t[i]] ++; 
+            count[s[i]-'a'] ++; 
+            count[t[i]-'a'] --; 
         }
-        for (auto& [k,v]:a){
-            if (b[k] != v){ return false;}
+        for (auto i: count){
+            if (i!=0){return false;}
         }
-        return true; 
+        return true;
     }
 };
