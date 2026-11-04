@@ -1,22 +1,24 @@
 class Solution {
 public:
-    int next (int x){
-        int tot = 0;
+    int next(int x){
+        int r = 0;
         while (x>0){
-           int d = x % 10;
-            tot +=d*d;
+            int d = x%10;
+            r +=d*d;
             x = x/10;
         }
-        return tot;
-
+        return r;
     }
+    
     bool isHappy(int n) {
-        std::unordered_set<int> seen; 
-        while (n!= 1 && !seen.count(n)){
+        set<int> seen;
+        while (n!=1 && !seen.count(n)){
             seen.insert(n);
-            n = next(n);
+            n= next(n);
         }
-        return n==1;
+        
+        return (n==1);
+
     }
 
 };
