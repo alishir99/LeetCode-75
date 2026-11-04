@@ -11,13 +11,14 @@ public:
     }
     
     bool isHappy(int n) {
-        set<int> seen;
-        while (n!=1 && !seen.count(n)){
-            seen.insert(n);
-            n= next(n);
+        int slow = n; 
+        int fast = next(slow);
+        while (slow!=fast){
+            slow = next(slow);
+            fast = next(next(fast));
         }
         
-        return (n==1);
+        return slow ==1;
 
     }
 
