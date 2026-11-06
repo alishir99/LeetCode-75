@@ -1,9 +1,7 @@
 class Solution:
     def singleNumber(self, nums: list[int]) -> int:
-        single= {}
+        ans = 0
         for i in nums:
-            single[i] = single.get(i, 0)+1
-        for i in nums:
-            if single[i]==1:
-                return i
+            ans = i^ans
+        return ans
         
