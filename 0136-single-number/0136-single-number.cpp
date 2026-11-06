@@ -1,10 +1,9 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        std::unordered_map<int, int> m;
-        int ans = 0;  
-        for (int n: nums){
-            ans = ans^n;
+        int ans = 0;
+        for (auto n:nums){
+            ans = n^ans;
         }
         return ans;
        
