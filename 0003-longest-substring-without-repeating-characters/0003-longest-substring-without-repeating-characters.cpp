@@ -3,7 +3,7 @@ public:
     int lengthOfLongestSubstring(string s) {
         int start = 0;
         int ans = 0;
-        set<char> st;
+        unordered_set<char> st;
         for (int i=0; i<s.size(); i++){
              while (st.count(s[i])){
                 st.erase(s[start]);
