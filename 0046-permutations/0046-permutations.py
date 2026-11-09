@@ -1,16 +1,18 @@
 class Solution:
     def permute(self, nums: list[int]) -> list[list[int]]:
-        result = []
-        def backtrack(path):
-            if len(path) == len(nums):
-                result.append(path)
+        output = []
+        stack = []
+        def backtrack(nums):
+            if len(stack) == len(nums):
+                output.append(stack[:])
                 return 
             for n in nums:
-                if n in path:
+                if n in stack:
                     continue 
-                else:
-                    path.append(n)
-                    backtrack(path[:])
-                    path.pop()
-        backtrack([])
-        return result 
+                
+                stack.append(n)
+                backtrack(nums)
+                stack.pop()
+        backtrack(nums)
+        return output 
+
