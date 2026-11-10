@@ -1,7 +1,17 @@
 class Solution:
     def topKFrequent(self, nums: list[int], k: int) -> list[int]:
-        freq = {}
+        map = {}
         for n in nums:
-            freq[n] = freq.get(n, 0)+1
-        freq = sorted(freq.items(), key=lambda kv:kv[1], reverse=True)[:k]
-        return [k for k, v in freq]
+            if n not in map:
+                map[n] = 1
+            else:
+                map[n] +=1
+        out = [[] for _ in range(len(nums)+1)]
+        for num, count in map.items():
+            out[count].append(num)
+        res = []
+        for i in range(len(out)-1, -1, -1):
+            for num in out[i]:
+                res.append(num)
+                if len(res)==k:
+                    return res
