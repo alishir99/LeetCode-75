@@ -1,7 +1,8 @@
 class Solution:
     def subsets(self, nums: list[int]) -> list[list[int]]:
-        output = []
+        output= []
         stack = []
+        start = 0
         def backtrack(start):
             output.append(stack[:])
             for i in range(start, len(nums)):
@@ -9,4 +10,4 @@ class Solution:
                 backtrack(i+1)
                 stack.pop()
         backtrack(0)
-        return output 
+        return output
