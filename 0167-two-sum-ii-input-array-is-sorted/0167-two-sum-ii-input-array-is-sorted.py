@@ -1,8 +1,11 @@
 class Solution:
     def twoSum(self, numbers: list[int], target: int) -> list[int]:
-        seen = {}
-        for i, n in enumerate(numbers):
-            diff = target - n
-            if diff in seen:
-                return [seen[diff]+1, i+1]
-            seen[n] = i
+        l, r = 0, len(numbers)-1
+        while l<r:
+            tot = numbers[l]+numbers[r]
+            if  tot == target:
+                return [l+1, r+1]
+            elif tot<target:
+                l +=1
+            else: 
+                r -=1 
