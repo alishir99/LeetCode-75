@@ -4,14 +4,14 @@ public:
         vector<int> indx(128, -1);
         int left = 0;
         int ans = 0;
-        for (int i=0; i<s.size(); i++){
-            if(indx[s[i]] >=left){
-                indx[s[i]]++;
-                left = indx[s[i]];
+        unordered_set<char> st;
+        for (int i =0; i<s.size(); i++){
+            while (!st.empty() && st.count(s[i])){
+                st.erase(s[left]);
+                left++;
             }
-            indx[s[i]] = i;
-            if (ans > (i-left +1)) ans = ans;
-            else ans = i-left+1;
+            st.insert(s[i]);
+            ans = std::max(ans, i-left+1);
         }
         return ans; 
     }
