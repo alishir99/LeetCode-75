@@ -5,13 +5,13 @@ class Solution:
         """
         zero_row = set()
         zero_col = set()
-        for i in range(len(matrix)):
-            for j in range(len(matrix[0])):
-                if matrix[i][j] == 0:
-                    zero_row.add(i)
-                    zero_col.add(j)
+        for r in range(len(matrix)):
+            for c in range(len(matrix[0])):
+                if matrix[r][c] == 0:
+                    zero_row.add(r)
+                    zero_col.add(c)
         for r in zero_row:
-            matrix[r] = [0]*len(matrix[r])
+            matrix[r] = [0]*len(matrix[0])
         for c in zero_col:
-            for row in matrix:
-                row[c] = 0
+            for i in range(len(matrix)):
+                matrix[i][c] = 0 
