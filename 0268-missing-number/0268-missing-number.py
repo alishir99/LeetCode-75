@@ -1,8 +1,10 @@
 class Solution:
     def missingNumber(self, nums: list[int]) -> int:
-        n = len(nums)+1
-        tot = (n*(n-1))//2
+        ans=0
+        for i, n in enumerate(nums):
+            ans ^=i^n
+        return ans^len(nums)
 
-        return tot-sum(nums)
+
 
 
