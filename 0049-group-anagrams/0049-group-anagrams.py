@@ -1,12 +1,14 @@
 class Solution:
     def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
-        group = defaultdict(list)
+        group = {}
+        out = []
         for w in strs:
-            cout = [0]*26
-            for c in w:
-                cout[ord(c)-ord('a')] +=1
-
-            key = tuple(cout)
+            key = ''.join(sorted(w))
+            if key not in group:
+                group[key] = []
             group[key].append(w)
-        return list(group.values())
+        for k,v in group.items():
+            out.append(v)
+
+        return out
     
