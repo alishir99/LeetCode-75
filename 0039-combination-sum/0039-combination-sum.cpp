@@ -1,20 +1,18 @@
 class Solution {
 public:
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        vector<vector<int>> output;
-        vector<int>st;
-        int remain = 0; 
-        int start = 0; 
-        function<void(int, int)> backtrack = [&](int start, int remain){
-            if (remain == 0) {output.push_back(st); return;}
-            if(remain<0){return;}
-            for(int i=start; i<candidates.size(); i++){
-                st.push_back(candidates[i]);
-                backtrack(i, remain-candidates[i]);
-                st.pop_back();
+        vector<vector<int>> out;
+        vector<int> stack; 
+        auto back = [&](auto& self, int i, int r){
+            if (r ==0) {out.push_back(stack); return;}
+            else if (r<0) return;
+            for (int j= i; j<candidates.size(); j++){
+                stack.push_back(candidates[j]);
+                self(self, j, r-candidates[j]);
+                stack.pop_back();
             }
         };
-        backtrack(0, target);
-        return output; 
+        back(back, 0, target);
+        return out; 
     }
 };
