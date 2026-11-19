@@ -2,7 +2,7 @@ class Solution:
     def hammingWeight(self, n: int) -> int:
         counter = 0
         while n>0: 
-            b = n%2
+            b = n&1
             if b == 1: counter +=b
             n//=2
         return counter 
