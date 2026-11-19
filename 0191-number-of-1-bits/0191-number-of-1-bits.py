@@ -1,3 +1,8 @@
 class Solution:
     def hammingWeight(self, n: int) -> int:
-        return n.bit_count()
+        counter = 0
+        while n>0: 
+            b = n%2
+            if b == 1: counter +=b
+            n//=2
+        return counter 
