@@ -4,4 +4,4 @@ class Solution:
         for _ in range(32): 
             ans = ans*2+n%2
             n//=2
-        return ans
+        return ans 
