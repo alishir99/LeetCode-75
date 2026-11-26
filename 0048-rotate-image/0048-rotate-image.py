@@ -6,6 +6,6 @@ class Solution:
         for r in range(len(matrix)):
             for c in range(r, len(matrix[0])):
                 matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-        for row in matrix: 
+        
+        for row in matrix:
             row[:] = row[::-1]
-
