@@ -1,6 +1,6 @@
 class Solution:
     def minCostClimbingStairs(self, cost: list[int]) -> int:
-        p1=p2 = 0
-        for c in cost:
-            p2,p1 = p1, c+min(p1,p2)
-        return min(p1,p2)
+        first = sec = 0 
+        for c in cost: 
+            sec , first = first, c+min(first, sec)
+        return min(first, sec)
