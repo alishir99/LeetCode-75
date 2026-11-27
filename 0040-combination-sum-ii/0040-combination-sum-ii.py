@@ -12,6 +12,7 @@ class Solution:
             else: 
                 for j in range(i, len(candidates)):
                     if j>i and candidates[j] == candidates[j-1]: continue  
+                    if candidates[j]>rem: break
                     stack.append(candidates[j])
                     dfs(j+1, rem-candidates[j])
                     stack.pop()
